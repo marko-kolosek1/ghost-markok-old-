@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    @user.has_role? :newuser
+    @user.has_role? :admin
   end
 
   def show?
