@@ -1,0 +1,14 @@
+<h1>HOMEPAGE</h1>
+<% if user_signed_in? %>
+  Are you admin? <%= current_user.has_role? :admin %>
+  <br>
+  Are you author? <%= current_user.has_role? :author %>
+  <br>
+  Are you editor? <%= current_user.has_role? :editor %>
+  <br>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+  <br>
+  <%= link_to "Sign up", new_user_registration_path %>      
+<% end %>
