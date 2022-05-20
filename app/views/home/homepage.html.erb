@@ -2,7 +2,9 @@
 <% if user_signed_in? %>
   Are you admin? <%= current_user.has_role? :admin %>
   <br>
-  Are you new user? <%= current_user.has_role? :newuser %>
+  Are you author? <%= current_user.has_role? :author %>
+  <br>
+  Are you editor? <%= current_user.has_role? :editor %>
   <br>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <% else %>

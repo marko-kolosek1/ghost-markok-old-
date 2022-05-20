@@ -1,0 +1,27 @@
+<%= form_with model: @user, class: "w-50" do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :surname %>
+    <%= f.text_field :surname %>
+  </div>  
+  <div class="form-group">
+    <%= f.label :bio %>
+    <%= f.text_area :bio, size: "40x10" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %> 
+    <%= f.email_field :email %>    
+  </div>
+  <div class="form-group">
+    <%= f.label :role %>
+    <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :slug %>
+    <%= f.text_field :slug %>
+  </div>  
+  <%= f.submit "Save" %>
+<% end %>
