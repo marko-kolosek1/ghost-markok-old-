@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def new
+    @user = User.new
+  end
+
   def edit
   end
 
@@ -18,9 +22,8 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     respond_to do |format|
-      format.html { redirect_to edit_user_path(@user.id), notice: 'User was successfully updated!' }
+      format.html { redirect_to user_path(@user.id), notice: 'User was successfully updated!' }
     end
-
   end
 
   private
@@ -30,11 +33,13 @@ class UsersController < ApplicationController
   end
 
   def set_slug
-    @user.set_slug
+    if @user
+      @user.set_slug
+    end
   end
 
   def user_params
-    params.require(:user).permit(:name, :surname, :email, :bio, :slug)
+    params.require(:user).permit(:name, :surname, :email, :bio, :slug, :avatar)
   end
 
 end

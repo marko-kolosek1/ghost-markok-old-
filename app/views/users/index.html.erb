@@ -1,4 +1,11 @@
 <% @users.each do |user| %>
  <%= user.email %>
+ <img src="<%= user.avatar %>">
+  <%= form_with model: @user do |f| %> 
+    <div class="field">
+      <%= f.label :edit_avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+  <% end %>
  <%= link_to "Your Profile", edit_user_path(user.id) %>
 <% end %>
